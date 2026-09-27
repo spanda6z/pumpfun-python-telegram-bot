@@ -1,43 +1,57 @@
 # Pump.fun Python Telegram Bot
 
-Single-file Telegram bot for trading [Pump.fun](https://pump.fun) tokens via [PumpPortal](https://pumpportal.fun).
+**New dedicated public repository** (not the TypeScript bot).
 
-**Repo:** https://github.com/spanda6z/pumpfun-python-telegram-bot  
-**Public** · Python 3.11 · Railway-ready
+https://github.com/spanda6z/pumpfun-python-telegram-bot
 
-## Features
+## What this is
 
-- Paste a mint → Buy / Sell buttons
-- `/buy` `/sell` `/panic` `/positions` `/wallet` `/settings` `/history` `/invite`
-- Paper trade mode (default)
-- Referral links (`/invite`)
-- Activity channel posts on buy/sell
-- Owner-only access (`TELEGRAM_ALLOWED_USER_IDS`)
+Python single-file Telegram bot for Pump.fun via PumpPortal:
 
-## Local run
+- Paste mint → buy/sell
+- Paper trade (default)
+- Referrals (`/invite`)
+- Activity channel broadcasts
+- Railway deploy (Dockerfile included)
+
+## Get the full bot source
+
+The complete `single_file_bot.py` is available here:
+
+https://github.com/spanda6z/pumpfun-telegram-bot/blob/main/python/single_file_bot.py
+
+**Copy it into this repo as `single_file_bot.py`**, then either:
 
 ```bash
-git clone https://github.com/spanda6z/pumpfun-python-telegram-bot.git
-cd pumpfun-python-telegram-bot
+# Local
 pip install -r requirements.txt
-cp .env.example .env
-# edit .env
+cp .env.example .env   # fill secrets
 python single_file_bot.py
+```
+
+or on Railway use `run_bot.py` (payload chunks) **or** change Dockerfile to:
+
+```dockerfile
+CMD ["python", "-u", "single_file_bot.py"]
 ```
 
 ## Deploy on Railway
 
-1. https://railway.app → **New Project** → **Deploy from GitHub**
+1. https://railway.app → New Project → Deploy from GitHub
 2. Select **spanda6z/pumpfun-python-telegram-bot**
-3. Add variables (see `.env.example`)
-4. Deploy — long-running worker (no public URL needed)
+3. Variables from `.env.example`
+4. Deploy as a **worker** (no public domain required)
 
-Keep `PAPER_TRADE=true` until you verify the flow.
+Keep `PAPER_TRADE=true` until verified.
 
-## Safety
+## Other repos (do not confuse)
 
-This can spend real SOL. You are responsible for losses. Never commit `.env` or private keys.
+| Repo | What |
+|------|------|
+| **This one** | New Python bot (public) |
+| `pumpfun-telegram-bot` | Existing TypeScript bot |
+| `pumpfun-telegram-bot-public` | Earlier mirror attempt |
 
 ## License
 
-MIT
+MIT — trade at your own risk.
