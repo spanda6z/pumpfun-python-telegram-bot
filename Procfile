@@ -1,1 +1,1 @@
-worker: python -u single_file_bot.py
+worker: python -u run_bot.py
